@@ -1,5 +1,6 @@
-<?php
+<?PHP
 
-	printf("Dit is mijn Telegram bot vanuit PHP.");
+printf("<h1>Deze tekst</h1>");
+
 ?>
 
