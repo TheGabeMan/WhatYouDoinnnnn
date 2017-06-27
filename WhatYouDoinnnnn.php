@@ -21,6 +21,9 @@ switch($message) {
     case "/hi":
         sendMessage($chatId, "hi there!");
         break;
+    case "/time":
+        sendMessage($chatId, "Current date en time is " . date("Y-m-d h:i:sa"));
+        break;
     default: 
         sendMessage($chatId, "Geen commando dus ik doe iets anders");
     
