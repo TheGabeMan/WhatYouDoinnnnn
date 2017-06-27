@@ -1,6 +1,40 @@
-<?PHP
+<?php 
 
-printf("<h1>Deze tekst dit is nog meer tekst 2254</h1>");
+print "<h1>Dit is een Telegram Bot</h1>";
+$botToken = "403038496:AAE4V-FKddyZM0S2VAPYKw7r7NPR-F2nDLg";
+$website = "https://api.telegram.org/bot".$botToken;
+
+$update = file_get_contents('php://input');
+$update = json_decode($update, TRUE);
+
+
+$chatId = $update["message"]["chat"]["id"];
+$message = $update["message"]["text"];
+
+
+
+switch($message) {
+    
+    case "/test":
+        sendMessage($chatId, "test");
+        break;
+    case "/hi":
+        sendMessage($chatId, "hi there!");
+        break;
+    default: 
+        sendMessage($chatId, "default");
+    
+}
+
+function sendMessage ($chatId, $message) {
+    
+    $url = $GLOBALS[website]."/sendMessage?chat_id=".$chatId."&text=".urlencode($message);
+    file_get_contents($url);
+    
+}
+ 
+
+
+
 
 ?>
-
