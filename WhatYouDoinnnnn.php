@@ -28,7 +28,7 @@ switch($message) {
         $keyboard = array(array("[Destaques]","[Campinas e RMC]","[esportes]"));
         $resp = array("keyboard" => $keyboard,"resize_keyboard" => true,"one_time_keyboard" => true);
         $reply = json_encode($resp);
-        $url = $§website."/sendmessage?chat_id=".$chatId."&text=oi&reply_markup=".$reply;
+        $url = $website."/sendmessage?chat_id=".$chatId."&text=oi&reply_markup=".$reply;
         file_get_contents($url);
         break;
     default: 
@@ -42,7 +42,7 @@ switch($message) {
 function sendMessage ($chatId, $message) {
     
     $url = $website."/sendMessage?chat_id=".$chatId."&text=".urlencode($message);
-    file_get_contents($url);
+    file_get_contents($url, ['verify_peer' => false]);
     
 }
  
