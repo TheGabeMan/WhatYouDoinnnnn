@@ -1,12 +1,13 @@
 <?php 
 
-print "<h1>Dit is een Telegram Bot 2355</h1>";
+print "<h1>Dit is een Telegram Bot 0001</h1>";
 $botToken = "403038496:AAE4V-FKddyZM0S2VAPYKw7r7NPR-F2nDLg";
 $website = "https://api.telegram.org/bot".$botToken;
 
 $update = file_get_contents('php://input');
 $update = json_decode($update, TRUE);
 
+print($update);
 
 $chatId = $update["message"]["chat"]["id"];
 $message = $update["message"]["text"];
