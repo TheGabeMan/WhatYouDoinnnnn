@@ -1,6 +1,6 @@
 <?php 
 
-print "<h1>Dit is een Telegram Bot 2349</h1>";
+print "<h1>Dit is een Telegram Bot 2355</h1>";
 $botToken = "403038496:AAE4V-FKddyZM0S2VAPYKw7r7NPR-F2nDLg";
 $website = "https://api.telegram.org/bot".$botToken;
 
@@ -20,6 +20,9 @@ switch($message) {
         break;
     case "/hi":
         sendMessage($chatId, "hi there!");
+        break;
+    case "list":
+        sendMessage($chatId, "LIST ONTVANGEN");
         break;
     case "/time":
         sendMessage($chatId, "Current date and time is " . date("Y-m-d H:i:s"));
