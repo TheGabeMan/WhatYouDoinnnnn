@@ -42,7 +42,13 @@ switch($message) {
 function sendMessage ($chatId, $message) {
     
     $url = $website."/sendMessage?chat_id=".$chatId."&text=".urlencode($message);
-    file_get_contents($url, ['verify_peer' => false]);
+    $context = stream_context_create( array(
+        'https' => array(
+        'verify_peer' => false,
+        'verify_peer_name' => false,
+        )
+    ));
+    file_get_contents($url, FALSE, $context);
     
 }
  
