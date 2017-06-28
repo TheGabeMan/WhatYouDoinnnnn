@@ -25,7 +25,7 @@ switch($message) {
         sendMessage($chatId, "Current date and time is " . date("Y-m-d H:i:s"));
         break;
     case "/buttons":
-        $keyboard = array(array("[Destaques]","[Campinas e RMC]","[esportes]"));
+        $keyboard = array(array("MEETING","C-I-P","LIST"));
         $resp = array("keyboard" => $keyboard,"resize_keyboard" => true,"one_time_keyboard" => true);
         $reply = json_encode($resp);
         $url = $website."/sendmessage?chat_id=".$chatId."&text=oi&reply_markup=".$reply;
