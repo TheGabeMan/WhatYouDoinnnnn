@@ -24,7 +24,7 @@ switch($message) {
         break;
     case "list":
         sendMessage($chatId, "LIST ONTVANGEN");
-        print(<h1>Dit is een Telegram Bot LIJST</h1>);
+        print("<h1>Dit is een Telegram Bot LIJST</h1>");
         break;
     case "/time":
         sendMessage($chatId, "Current date and time is " . date("Y-m-d H:i:s"));
