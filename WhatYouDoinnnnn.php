@@ -1,6 +1,6 @@
 <?php 
 
-print "<h1>Dit is een Telegram Bot 0003</h1>";
+print "<h1>Dit is een Telegram Bot 0004</h1>";
 $botToken = "403038496:AAE4V-FKddyZM0S2VAPYKw7r7NPR-F2nDLg";
 $website = "https://api.telegram.org/bot".$botToken;
 
@@ -53,7 +53,7 @@ function sendMessage ($chatId, $message, $website) {
         'verify_peer_name' => false,
         )
     ));
-    file_get_contents($url);    #    , FALSE, $context);
+    file_get_contents($url, FALSE, $context);
     
 }
  
