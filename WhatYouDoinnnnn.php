@@ -36,6 +36,9 @@ switch($message) {
         $url = $website."/sendmessage?chat_id=".$chatId."&text=".urlencode("Kies optie:")."&reply_markup=".$reply;
         file_get_contents($url);
         break;
+    case $chatId = "":
+        print_r( "ChatId is leeg" .$chatId);
+        break;
     default: 
         sendMessage($chatId, "Geen commando dus ik doe iets anders", $website);
         print_r( $chatId." --- ".$website. "  Test bij default");
