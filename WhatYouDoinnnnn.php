@@ -7,13 +7,14 @@ $website = "https://api.telegram.org/bot".$botToken;
 $content = file_get_contents('php://input');
 $update = json_decode($content, TRUE);
 
-writeDebug("line 10 :" .$update);
+writeDebug("debug content:" .$update."</br>");
+writeDebug("debug update :" .$update."</br>");
 
 $chatId = $update["message"]["chat"]["id"];
 $message = $update["message"]["text"];
 
-writeDebug("line 15 : " .$chatID);
-writeDebug("line 16 : " .$message);
+writeDebug("debug chatid : " .$chatID."</br>");
+writeDebug("debug message: " .$message."</br>");
 
 
 switch($message) {
