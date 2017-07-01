@@ -43,6 +43,7 @@ switch($message) {
     case "MEETING":
         writeDebug("debug after buttons MEETING: ");
         sendMessage($chatId, urlencode("MEETING omschrijving: "));
+        writeDebug("debug after buttons MEETING and sendMessage ");
         WriteRow($chatId, $message);
         
         
@@ -109,10 +110,10 @@ function WriteRow($chatId, $message){
      * Activity Type = Type of activity which can be IPWC (Incident, Problem, Wijziging, Controle) or D (Desk Meeting) or M (Meeting) or R (pRoject)
      * 
      */
-
+    writeDebug(" Arrived at WriteRow with " . $chatId . " and " . $message );
     require_once("open-database.php");
     
-    writeDebug(" Arrived at WriteRow with " . $chatId . " and " . $message );
+    writeDebug(" WriteRow with " . $chatId . " and " . $message );
     $sqlString = "INSERT INTO `ActivTable`(`chatid`,`timestamp`,starttime`,`durationmin`,`activitytype`,`activitydescription`) VALUES($chatId, now(), `10:00`, 15, `P`, `Standaard Problem`); ";
     
     writeDebug(" SQLString =  " . $sqlString );
