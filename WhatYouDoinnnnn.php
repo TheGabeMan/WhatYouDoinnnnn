@@ -33,15 +33,16 @@ switch($message) {
         sendMessage($chatId, "Current date and time is " . date("Y-m-d H:i:s"));
         break;
     case "/buttons":
+        writeDebug("debug buttons chatid: " .$chatId);
         $keyboard = array(array("MEETING","C-I-P","LIST"));
         $resp = array("keyboard" => $keyboard,"resize_keyboard" => true,"one_time_keyboard" => true);
         $reply = json_encode($resp);
         $url = $website."/sendmessage?chat_id=".$chatId."&text=".urlencode("Kies optie:")."&reply_markup=".$reply;
-        writeDebug("debug buttons :" .$url);
+        writeDebug("debug buttons 2:" .$url);
         file_get_contents($url);
         break;
     case $chatId = "":
-        print_r( "ChatId is leeg" .$chatId);
+        writeDebug( "ChatId is leeg" .$chatId);
         break;
     default: 
         sendMessage($chatId, "Geen commando dus ik doe iets anders", $website);
