@@ -3,8 +3,8 @@
        # db_hostname is the name of the docker container in which MySQL runs
  
     // ----------- Database connection ----------//
-    $mysql_db_hostname = "WhatDoin";
-    $mysql_db_user = "TelegramSQL";
+    $mysql_db_hostname = "whatdoin";
+    $mysql_db_user = "telegramsql";
     $mysql_db_password = "L@mpMyG@B";
     $mysql_db_database = "dbWhatDoin";  
     

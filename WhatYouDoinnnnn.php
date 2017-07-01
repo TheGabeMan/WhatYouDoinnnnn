@@ -41,7 +41,7 @@ switch($message) {
     
     // Responses to the buttons: MEETING IPWC BUREAU_OVERLEG
     case "MEETING":
-        writeDebug("debug buttons MEETING: ");
+        writeDebug("debug after buttons MEETING: ");
         sendMessage($chatId, urlencode("MEETING omschrijving: "));
         WriteRow($chatId, $message);
         
@@ -111,7 +111,11 @@ function WriteRow($chatId, $message){
      */
 
     require_once("open-database.php");
+    
+    writeDebug(" Arrived at WriteRow with " . $chatId . " and " . $message );
     $sqlString = "INSERT INTO `ActivTable`(`chatid`,`timestamp`,starttime`,`durationmin`,`activitytype`,`activitydescription`) VALUES($chatId, now(), `10:00`, 15, `P`, `Standaard Problem`); ";
+    
+    writeDebug(" SQLString =  " . $sqlString );
     if (!mysqli_query($dbcon,$sql))
       { 
         writeDebug("Error with database" .mysqli_error($dbcon) );
