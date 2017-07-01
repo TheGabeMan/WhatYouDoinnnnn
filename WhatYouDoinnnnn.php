@@ -38,6 +38,7 @@ switch($message) {
         break;
     default: 
         sendMessage($chatId, "Geen commando dus ik doe iets anders", $website);
+        print_r( $chatId, $website, "Test bij default");
     
 }
 
