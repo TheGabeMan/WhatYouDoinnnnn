@@ -15,6 +15,7 @@ $message = $update["message"]["text"];
 
 writeDebug("debug chatid : " .$chatId);
 writeDebug("debug message: " .$message);
+writeDebug("debug website: " .$website);
 
 
 switch($message) {
@@ -26,7 +27,7 @@ switch($message) {
         sendMessage($chatId, "hi there!");
         break;
     case "/list":
-        sendMessage($chatId, "LIST ONTVANGEN");
+        sendMessage($chatId, "LIST ONTVANGEN",$website);
         print("<h1>Dit is een Telegram Bot LIJST</h1>");
         break;
     case "/time":
