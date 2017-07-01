@@ -44,7 +44,7 @@ switch($message) {
   
 
 
-function sendMessage ($chatId, $message) {
+function sendMessage ($chatId, $message, $website) {
     
     $url = $website."/sendMessage?chat_id=".$chatId."&text=".urlencode($message);
     $context = stream_context_create( array(
