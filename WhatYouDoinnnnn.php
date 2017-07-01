@@ -37,6 +37,7 @@ switch($message) {
         $resp = array("keyboard" => $keyboard,"resize_keyboard" => true,"one_time_keyboard" => true);
         $reply = json_encode($resp);
         $url = $website."/sendmessage?chat_id=".$chatId."&text=".urlencode("Kies optie:")."&reply_markup=".$reply;
+        writeDebug("debug buttons :" .$url);
         file_get_contents($url);
         break;
     case $chatId = "":
@@ -44,7 +45,7 @@ switch($message) {
         break;
     default: 
         sendMessage($chatId, "Geen commando dus ik doe iets anders", $website);
-        print_r( $chatId." --- ".$website. "  Test bij default");
+        writeDebug( "Debug bij default: ".$chatId." --- ".$website);
     
 }
 
