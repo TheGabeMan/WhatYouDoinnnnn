@@ -110,11 +110,8 @@ function WriteRow($chatId, $message){
      * 
      */
 
-require_once("open-database.php");
-
-$date = date("Y-m-d H:i:s");
-
-$sqlString = "INSERT INTO `ActivTable`(`chatid`,`timestamp`,starttime`,`durationmin`,`activitytype`,`activitydescription`) VALUES($chatId, now(), `10:00`, 15, `P`, `Standaard Problem`); ";
+    require_once("open-database.php");
+    $sqlString = "INSERT INTO `ActivTable`(`chatid`,`timestamp`,starttime`,`durationmin`,`activitytype`,`activitydescription`) VALUES($chatId, now(), `10:00`, 15, `P`, `Standaard Problem`); ";
     if (!mysqli_query($dbcon,$sql))
       { 
         writeDebug("Error with database" .mysqli_error($dbcon) );
