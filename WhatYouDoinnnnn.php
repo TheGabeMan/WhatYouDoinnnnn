@@ -60,18 +60,16 @@ function sendMessage ($chatId, $message, $website) {
         'verify_peer_name' => false,
         )
     ));
+    writeDebug("debug url to SendMessage :" .$url);
     file_get_contents($url, FALSE, $context);
     
 }
  
 
-# https://api.telegram.org/bot403038496:AAE4V-FKddyZM0S2VAPYKw7r7NPR-F2nDLg/setWebhook?url=https://phpserver-whatyoudoinnnnn.publicpaas.openshift.openline.nl/WhatYouDoinnnnn.php
-
-
 function writeDebug( $data ){
     
     $logfile ="log_WhatYouDoinnnnn.log";
-    file_put_contents($logfile, $data, FILE_APPEND);
+    file_put_contents($logfile, date("Y-m-d H:i:s").$data, FILE_APPEND);
     
 }
 
