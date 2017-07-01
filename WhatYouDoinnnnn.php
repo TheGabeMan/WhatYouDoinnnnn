@@ -37,7 +37,7 @@ switch($message) {
         file_get_contents($url);
         break;
     default: 
-        sendMessage($chatId, "Geen commando dus ik doe iets anders");
+        sendMessage($chatId, "Geen commando dus ik doe iets anders", $website);
     
 }
 
