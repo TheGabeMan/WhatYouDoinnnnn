@@ -17,8 +17,8 @@ writeDebug("debug message: " .$message);
 
 switch($message) {
     
-    case "/test":
-        sendMessage($chatId, urlencode("test"));
+    case "/WhoIsBas":
+        sendMessage($chatId, urlencode("The Beethoven to be"));
         break;
     case "/hi":
         sendMessage($chatId, urlencode("hi there!"));
@@ -31,16 +31,31 @@ switch($message) {
         break;
     case "/buttons":
         writeDebug("debug buttons chatid: " .$chatId);
-        $keyboard = array(array("MEETING","C-I-P","LIST"));
+        $keyboard = array(array("MEETING","IPWC","BUREAU_OVERLEG"));
         $resp = array("keyboard" => $keyboard,"resize_keyboard" => true,"one_time_keyboard" => true);
         $reply = json_encode($resp);
         writeDebug("debug buttons 2:".$url);
         
         sendMessage($chatId, urlencode("Kies optie:")."&reply_markup=".$reply);
-        # $url = $website."/sendmessage?chat_id=".$chatId."&text=".urlencode("Kies optie:")."&reply_markup=".$reply;
-        # file_get_contents($url);
         break;
     
+    // Responses to the buttons: MEETING IPWC BUREAU_OVERLEG
+    case "MEETING":
+        writeDebug("debug buttons MEETING: ");
+        sendMessage($chatId, urlencode("MEETING omschrijving: "));
+        
+    case "IPWC":
+        writeDebug("debug buttons IPWC: ");
+        sendMessage($chatId, urlencode("IPWC omschrijving: "));
+        
+    case "BUREAU_OVERLEG":
+        writeDebug("debug buttons BUREAU_OVERLEG: ");
+        sendMessage($chatId, urlencode("BUREAU_OVERLEG omschrijving: "));
+        
+
+        
+        
+        
     default: 
         writeDebug("debug default chatid: " .$chatId);
         sendMessage($chatId, urlencode("Geen commando dus ik doe iets anders"));
