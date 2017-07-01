@@ -6,17 +6,14 @@ $website = "https://api.telegram.org/bot".$botToken;
 
 $content = file_get_contents('php://input');
 $update = json_decode($content, TRUE);
-
-writeDebug("debug content:" .$content);
-writeDebug("debug update :" .$update);
-
 $chatId = $update["message"]["chat"]["id"];
 $message = $update["message"]["text"];
 
+// Debug data
+writeDebug("debug content:" .$content);
+writeDebug("debug update :" .$update);
 writeDebug("debug chatid : " .$chatId);
 writeDebug("debug message: " .$message);
-writeDebug("debug website: " .$website);
-
 
 switch($message) {
     
@@ -27,8 +24,7 @@ switch($message) {
         sendMessage($chatId, "hi there!");
         break;
     case "/list":
-        sendMessage($chatId, "LIST ONTVANGEN",$website);
-        print("<h1>Dit is een Telegram Bot LIJST</h1>");
+        sendMessage($chatId, "LIST ONTVANGEN");
         break;
     case "/time":
         sendMessage($chatId, "Current date and time is " . date("Y-m-d H:i:s"));
@@ -38,13 +34,16 @@ switch($message) {
         $keyboard = array(array("MEETING","C-I-P","LIST"));
         $resp = array("keyboard" => $keyboard,"resize_keyboard" => true,"one_time_keyboard" => true);
         $reply = json_encode($resp);
-        $url = $website."/sendmessage?chat_id=".$chatId."&text=".urlencode("Kies optie:")."&reply_markup=".$reply;
         writeDebug("debug buttons 2:" .$url);
-        file_get_contents($url);
+        
+        sendMessage($chatId, "Kies optie:&reply_markup=".$reply);
+        # $url = $website."/sendmessage?chat_id=".$chatId."&text=".urlencode("Kies optie:")."&reply_markup=".$reply;
+        # file_get_contents($url);
         break;
+    
     default: 
         writeDebug("debug default chatid: " .$chatId);
-        sendMessage($chatId, "Geen commando dus ik doe iets anders", $website);
+        sendMessage($chatId, "Geen commando dus ik doe iets anders");
         
     
 }
@@ -53,7 +52,11 @@ writeDebug("</br> <p> - New Run - </p>&nbsp;</br>");
 
 
 
-function sendMessage ($chatId, $message, $website) {
+function sendMessage ($chatId, $message) {
+    
+    
+    $botToken = "403038496:AAE4V-FKddyZM0S2VAPYKw7r7NPR-F2nDLg";
+    $website = "https://api.telegram.org/bot".$botToken;
     
     $url = $website."/sendMessage?chat_id=".$chatId."&text=".urlencode($message);
     $context = stream_context_create( array(
