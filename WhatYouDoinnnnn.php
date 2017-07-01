@@ -53,7 +53,7 @@ function sendMessage ($chatId, $message) {
         'verify_peer_name' => false,
         )
     ));
-    file_get_contents($url, FALSE, $context);
+    file_get_contents($url);    #    , FALSE, $context);
     
 }
  
