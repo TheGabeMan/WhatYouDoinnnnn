@@ -41,11 +41,8 @@ switch($message) {
         writeDebug("debug buttons 2:" .$url);
         file_get_contents($url);
         break;
-    case $chatId = "":
-        writeDebug( "ChatId is leeg" .$chatId);
-        break;
     default: 
-        writeDebug( "Debug bij default: ".$chatId." --- ".$website);
+        writeDebug("debug default chatid: " .$chatId);
         sendMessage($chatId, "Geen commando dus ik doe iets anders", $website);
         
     
