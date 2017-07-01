@@ -18,23 +18,23 @@ writeDebug("debug message: " .$message);
 switch($message) {
     
     case "/test":
-        sendMessage($chatId, "test");
+        sendMessage($chatId, urlencode("test"));
         break;
     case "/hi":
-        sendMessage($chatId, "hi there!");
+        sendMessage($chatId, urlencode("hi there!"));
         break;
     case "/list":
-        sendMessage($chatId, "LIST ONTVANGEN");
+        sendMessage($chatId, urlencode("LIST ONTVANGEN"));
         break;
     case "/time":
-        sendMessage($chatId, "Current date and time is " . date("Y-m-d H:i:s"));
+        sendMessage($chatId, urlencode("Current date and time is " . date("Y-m-d H:i:s")));
         break;
     case "/buttons":
         writeDebug("debug buttons chatid: " .$chatId);
         $keyboard = array(array("MEETING","C-I-P","LIST"));
         $resp = array("keyboard" => $keyboard,"resize_keyboard" => true,"one_time_keyboard" => true);
         $reply = json_encode($resp);
-        writeDebug("debug buttons 2:" .$url);
+        writeDebug("debug buttons 2:".$url);
         
         sendMessage($chatId, urlencode("Kies optie:")."&reply_markup=".$reply);
         # $url = $website."/sendmessage?chat_id=".$chatId."&text=".urlencode("Kies optie:")."&reply_markup=".$reply;
@@ -43,7 +43,7 @@ switch($message) {
     
     default: 
         writeDebug("debug default chatid: " .$chatId);
-        sendMessage($chatId, "Geen commando dus ik doe iets anders");
+        sendMessage($chatId, urlencode("Geen commando dus ik doe iets anders"));
         
     
 }
@@ -58,7 +58,7 @@ function sendMessage ($chatId, $message) {
     $botToken = "403038496:AAE4V-FKddyZM0S2VAPYKw7r7NPR-F2nDLg";
     $website = "https://api.telegram.org/bot".$botToken;
     
-    $url = $website."/sendMessage?chat_id=".$chatId."&text=".urlencode($message);
+    $url = $website."/sendMessage?chat_id=".$chatId."&text=".$message;
     $context = stream_context_create( array(
         'https' => array(
         'verify_peer' => false,
