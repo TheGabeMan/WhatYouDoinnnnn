@@ -7,14 +7,14 @@ $website = "https://api.telegram.org/bot".$botToken;
 $content = file_get_contents('php://input');
 $update = json_decode($content, TRUE);
 
-writeDebug("debug content:" .$update."</br>");
-writeDebug("debug update :" .$update."</br>");
+writeDebug("debug content:" .$content);
+writeDebug("debug update :" .$update);
 
 $chatId = $update["message"]["chat"]["id"];
 $message = $update["message"]["text"];
 
-writeDebug("debug chatid : " .$chatID."</br>");
-writeDebug("debug message: " .$message."</br>");
+writeDebug("debug chatid : " .$chatID);
+writeDebug("debug message: " .$message);
 
 
 switch($message) {
@@ -45,8 +45,9 @@ switch($message) {
         writeDebug( "ChatId is leeg" .$chatId);
         break;
     default: 
-        sendMessage($chatId, "Geen commando dus ik doe iets anders", $website);
         writeDebug( "Debug bij default: ".$chatId." --- ".$website);
+        sendMessage($chatId, "Geen commando dus ik doe iets anders", $website);
+        
     
 }
 
@@ -71,7 +72,7 @@ function sendMessage ($chatId, $message, $website) {
 function writeDebug( $data ){
     
     $logfile ="log_WhatYouDoinnnnn.log";
-    file_put_contents($logfile, date("Y-m-d H:i:s").$data, FILE_APPEND);
+    file_put_contents($logfile, date("Y-m-d H:i:s").$data."</br>", FILE_APPEND);
     
 }
 
