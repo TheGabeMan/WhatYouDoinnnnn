@@ -1,6 +1,6 @@
 <?php 
 
-print "<h1>Dit is een Telegram Bot 0001</h1>";
+print "<h1>Dit is een Telegram Bot 0002</h1>";
 $botToken = "403038496:AAE4V-FKddyZM0S2VAPYKw7r7NPR-F2nDLg";
 $website = "https://api.telegram.org/bot".$botToken;
 
