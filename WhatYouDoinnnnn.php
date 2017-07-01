@@ -43,6 +43,8 @@ switch($message) {
     case "MEETING":
         writeDebug("debug buttons MEETING: ");
         sendMessage($chatId, urlencode("MEETING omschrijving: "));
+        WriteRow($chatId, $message);
+        
         
     case "IPWC":
         writeDebug("debug buttons IPWC: ");
@@ -92,5 +94,35 @@ function writeDebug( $data ){
     file_put_contents($logfile, date("Y-m-d H:i:s").$data."</br>", FILE_APPEND);
     
 }
+
+
+function WriteRow($chatId, $message){
+    
+    /*
+     * What should the database look like?
+     * Table Name ---> ActivTable
+     * chatID = unique for each user
+     * TimeStamp = date and time this entry was made (for now I'll use this. Later start time and duration should be used.
+     * StartTime = time like 10:00, 10:30, 10:45
+     * DurationMin = duration in Minutes
+     * Activity = Activity description
+     * Activity Type = Type of activity which can be IPWC (Incident, Problem, Wijziging, Controle) or D (Desk Meeting) or M (Meeting) or R (pRoject)
+     * 
+     */
+}
+
+require_once("basic-functions.php");
+require("open-database.php");
+
+$date = date("Y-m-d H:i:s");
+
+$sqlString = "INSERT INTO `ActivTable`(`chatid`,`timestamp`,starttime`,`durationmin`,`activitytype`,`activitydescription`) VALUES($chatId, now(), `10:00`, 15, `P`, `Standaard Problem`); ";
+    if (!mysqli_query($dbcon,$sql))
+      { 
+        writeDebug("Error with database" .mysqli_error($dbcon) );
+        die('Error: ' . mysqli_error($dbcon)); 
+        
+      }
+    $results = mysqli_query($dbcon,$sql);
 
 ?>
