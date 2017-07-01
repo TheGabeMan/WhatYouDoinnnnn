@@ -36,7 +36,7 @@ switch($message) {
         $reply = json_encode($resp);
         writeDebug("debug buttons 2:" .$url);
         
-        sendMessage($chatId, "Kies optie:&reply_markup=".$reply);
+        sendMessage($chatId, urlencode("Kies optie:")."&reply_markup=".$reply);
         # $url = $website."/sendmessage?chat_id=".$chatId."&text=".urlencode("Kies optie:")."&reply_markup=".$reply;
         # file_get_contents($url);
         break;
