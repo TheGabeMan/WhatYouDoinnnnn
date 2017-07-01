@@ -111,7 +111,7 @@ function WriteRow($chatId, $message){
      * 
      */
     writeDebug(" Arrived at WriteRow with " . $chatId . " and " . $message );
-    require_once("open-database.php");
+    connectSQL();
     
     writeDebug(" WriteRow with " . $chatId . " and " . $message );
     $sqlString = "INSERT INTO `ActivTable`(`chatid`,`timestamp`,starttime`,`durationmin`,`activitytype`,`activitydescription`) VALUES($chatId, now(), `10:00`, 15, `P`, `Standaard Problem`); ";
@@ -128,7 +128,7 @@ function WriteRow($chatId, $message){
 
 function WriteToLogDB($URLOKArray)
 {
-    require_once( 'open-database.php');
+    connectSQL();
     
     // Write to log table
     $sql = "INSERT INTO `ConnectionLog`(`timestamp`,`url01`,`url02`, `url03`) VALUES( now(), $URLOKArray[0], $URLOKArray[1],$URLOKArray[2]);";
@@ -143,6 +143,23 @@ function WriteToLogDB($URLOKArray)
     printf("Error  \n",  mysqli_error($dbcon));
     
     mysqli_close($dbcon);
+}
+
+function connectSQL()
+{
+    writeDebug(" Arrived at connectSQL " );
+    global $dbcon;
+    
+    $mysql_db_hostname = "whatdoin";
+    $mysql_db_user = "telegramsql";
+    $mysql_db_password = "L@mpMyG@B";
+    $mysql_db_database = "dbWhatDoin";  
+    
+    $dbcon = mysqli_connect($mysql_db_hostname, $mysql_db_user, $mysql_db_password) 
+                       or die("Failed to connect to MySQL: " . mysqli_connect_error());
+    
+    mysqli_select_db($dbcon, $mysql_db_database) or die("Could not select database" . mysqli_connect_error());
+
 }
 
 ?>
