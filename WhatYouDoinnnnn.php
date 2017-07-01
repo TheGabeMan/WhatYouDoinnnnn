@@ -33,7 +33,7 @@ switch($message) {
         $keyboard = array(array("MEETING","C-I-P","LIST"));
         $resp = array("keyboard" => $keyboard,"resize_keyboard" => true,"one_time_keyboard" => true);
         $reply = json_encode($resp);
-        $url = $website."/sendmessage?chat_id=".$chatId."&text=oi&reply_markup=".$reply;
+        $url = $website."/sendmessage?chat_id=".$chatId."&text=".urlencode("Kies optie:")."&reply_markup=".$reply;
         file_get_contents($url);
         break;
     default: 
