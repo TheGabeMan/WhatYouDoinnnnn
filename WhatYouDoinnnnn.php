@@ -7,11 +7,13 @@ $website = "https://api.telegram.org/bot".$botToken;
 $content = file_get_contents('php://input');
 $update = json_decode($content, TRUE);
 
-print_r($update);
+writeDebug("line 10 :" .$update);
 
 $chatId = $update["message"]["chat"]["id"];
 $message = $update["message"]["text"];
 
+writeDebug("line 15 : " .$chatID);
+writeDebug("line 16 : " .$message);
 
 
 switch($message) {
@@ -22,7 +24,7 @@ switch($message) {
     case "/hi":
         sendMessage($chatId, "hi there!");
         break;
-    case "list":
+    case "/list":
         sendMessage($chatId, "LIST ONTVANGEN");
         print("<h1>Dit is een Telegram Bot LIJST</h1>");
         break;
@@ -65,5 +67,11 @@ function sendMessage ($chatId, $message, $website) {
 # https://api.telegram.org/bot403038496:AAE4V-FKddyZM0S2VAPYKw7r7NPR-F2nDLg/setWebhook?url=https://phpserver-whatyoudoinnnnn.publicpaas.openshift.openline.nl/WhatYouDoinnnnn.php
 
 
+function writeDebug( $data ){
+    
+    $logfile ="log_WhatYouDoinnnnn.log";
+    file_put_contents($logfile, $data, FILE_APPEND);
+    
+}
 
 ?>
