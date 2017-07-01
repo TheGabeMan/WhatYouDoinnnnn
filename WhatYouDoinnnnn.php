@@ -13,7 +13,7 @@ writeDebug("debug update :" .$update);
 $chatId = $update["message"]["chat"]["id"];
 $message = $update["message"]["text"];
 
-writeDebug("debug chatid : " .$chatID);
+writeDebug("debug chatid : " .$chatId);
 writeDebug("debug message: " .$message);
 
 
@@ -51,7 +51,8 @@ switch($message) {
     
 }
 
-  
+writeDebug("</br> <p> - New Run - </p>&nbsp;</br>");
+
 
 
 function sendMessage ($chatId, $message, $website) {
